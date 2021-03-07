@@ -1,0 +1,18 @@
+// Import Fonts
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+// Import Custom Variables
+@import 'variables';
+
+// Import Bootstrap
+@import 'bootstrap/bootstrap';
+
+// Template mixins
+@import './mixins/misc';
+@import './mixins/animation';
+
+@import 'misc';
+@import 'navs';
+@import 'layouts';
+@import 'mobile-layout';
+@import 'vertical-wrapper';
