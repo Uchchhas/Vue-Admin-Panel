@@ -1,18 +1,19 @@
 @import "variables";
 
 :root {
-  --base-color: #{$base-color};
+  --base-color: #{lighten($brand-color, 65%)};
   --navbar-bg: #{$white};
-  --sidebar-bg: #{$sidebar-dark-bg};
+  --sidebar-bg: #{$white};
   --default-font-color: #313131;
   --default-border-color: #F0F2F5;
-  --input-search-box-border: #{$default-light-color};
+  --input-search-box-border: #{$light-color};
   --dropdown-menu-bg: #{$white};
+  --dropdown-item-hover-bg: var(--base-color);
   --default-card-bg: #{$white};
   --default-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05);
-  --navbar-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-  --navbar-brand-bg: #{darken($sidebar-dark-bg, 6%)};
-  --sidebar-box-shadow: none;
+  --navbar-box-shadow: 9px 2px 10px rgba(0, 0, 0, 0.05);
+  --navbar-brand-bg: #{$white};
+  --sidebar-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05);
   --vertical-tab-header-bg: #fbfcff;
   --vertical-tab-icon-shadow: none;
   --vertical-tab-icon-bg: #{$white};
@@ -20,12 +21,12 @@
   --accordion-header-bg: #{$base-color};
   --default-custom-control-bg: #{$white};
   --btn-light-bg: #{$white};
-  --btn-secondary-bg: #{$default-secondary-color};
-  --btn-secondary-hover-bg: #{darken($default-secondary-color, 10%)};
+  --btn-secondary-bg: #{$secondary-color};
+  --btn-secondary-hover-bg: #{darken($secondary-color, 10%)};
   --icon-hover-bg: #{lighten($brand-color, 35%)};
   --authentication-form-bg: #{$white};
   --btn-filter-bg: #{$white};
-  --range-slider-baseline-bg: #{$default-secondary-color};
+  --range-slider-baseline-bg: #{$secondary-color};
   --calendar-bg: #{$white};
   --bg-x-icon: #{lighten($brand-color, 35%)};
   --shadow-x-icon: none;
@@ -62,6 +63,7 @@
   --default-border-color: #{lighten($sidebar-dark-bg, 2%)};
   --input-search-box-border: transparent;
   --dropdown-menu-bg: #{darken($sidebar-dark-bg, 3%)};
+  --dropdown-item-hover-bg: var(--base-color);
   --default-card-bg: #{darken($sidebar-dark-bg, 2%)};
   --default-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   --navbar-box-shadow: 1px 5px 6px rgba(0, 0, 0, 0.09);
@@ -101,7 +103,7 @@
   --submenu-shadow: 2px 1px 1px 0px rgba(0, 0, 0, 0.3);
   --select-arrow: url(/images/chevron-down-dark.svg);
   --close-cursore: url(/images/close-cursor-dark.png);
-  --not-found-opacity: .7;
+  --not-found-opacity: 0.7;
   --search-result-dropdown-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
   --kanban-scrollbar-track: #{lighten($sidebar-scrollbar-thumb-color, 10%)};
   --kanban-scrollbar-thumb: #{darken($sidebar-scrollbar-thumb-color, 5%)};

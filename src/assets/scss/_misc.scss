@@ -3,10 +3,23 @@
 
 body, html {
   overflow-x: hidden;
-  font-family: $type-1;
+  font-family: 'Roboto', sans-serif;
   padding-right: 0 !important;
   font-size: $default-font-size;
   color: var(--default-font-color);
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: lighten($brand-color, 50%);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: $brand-color;
+  }
 }
 
 *:-moz-full-screen,
@@ -17,6 +30,7 @@ body, html {
 
 a {
   text-decoration: none !important;
+
   &.text-muted {
     &:hover {
       color: $brand-color !important;

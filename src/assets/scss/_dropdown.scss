@@ -1,0 +1,20 @@
+@import 'variables';
+@import 'theme-colors';
+
+.dropdown {
+  .dropdown-menu {
+    background-color: var(--dropdown-menu-bg);
+
+    .dropdown-divider {
+      border-color: var(--default-border-color);
+    }
+
+    .dropdown-item {
+      color: var(--default-font-color);
+
+      &:hover {
+        background-color: var(--dropdown-item-hover-bg);
+      }
+    }
+  }
+}

@@ -6,7 +6,6 @@ export default {
     },
     watch: {
         darkMode: function () {
-            // add/remove class to/from html tag
             let htmlElement = document.documentElement;
 
             if (this.darkMode) {
@@ -19,73 +18,55 @@ export default {
         }
     },
     mounted() {
-        this.$nextTick(function () {
-            let body = $('body');
-            let sidebar = $('.sidebar');
+        document.addEventListener("DOMContentLoaded", function (event) {
+            let body = document.querySelector('body');
+            let sidebar = document.querySelector('.sidebar');
 
-            // Initialized Bootstrap Tooltip
-            $(document).ready(function () {
-                $('[data-toggle="tooltip"]').tooltip();
+            // Add active class to nav-link based on dynamic url
+            let current = location.pathname.split('/').pop();
+            $('.nav li a', sidebar).each(function () {
+                let $this = $(this);
+                addActiveClass($this);
             });
 
-            $(function () {
-                // Add active class to nav-link based on url dynamically
-                function addActiveClass(element) {
-                    if (current === "") {
-                        // For root url
-                        if (element.attr('href').indexOf("index.html") !== -1) {
-                            element.parents('.nav-item').last().addClass('active');
-                            if (element.parents('.sub-menu').length) {
-                                element.closest('.collapse').addClass('show');
-                                element.addClass('active');
-                            }
-                        }
-                    } else {
-                        // For others url
-                        if (element.attr('href').indexOf(current) !== -1) {
-                            element.parents('.nav-item').last().addClass('active');
-                            if (element.parents('.sub-menu').length) {
-                                element.closest('.collapse').addClass('show');
-                                element.addClass('active');
-                            }
-                            if (element.parents('.submenu-item').length) {
-                                element.addClass('active');
-                            }
-                        }
+            // For active classes of sidebar menu
+            function addActiveClass(element) {
+                if (element.attr('href').includes(current ? current : 'index.html')) {
+                    element.parents('.nav-item').last().classList.add('active');
+                    if (element.parents('.sub-menu').length) {
+                        element.closest('.collapse').classList.add('show');
+                        element.classList.add('active');
+                    }
+                    if (element.parents('.submenu-item').length) {
+                        element.classList.add('active');
                     }
                 }
+            }
 
-                let current = location.pathname;
-                $('.nav li a', sidebar).each(function () {
-                    let $this = $(this);
-                    addActiveClass($this);
-                });
-
-                // Close other submenu in sidebar on opening any
-                sidebar.on('show.bs.collapse', '.collapse', function () {
-                    sidebar.find('.collapse.show').collapse('hide');
-                });
+            // Close other submenu in sidebar on opening any
+            sidebar.on('show.bs.collapse', '.collapse', function () {
+                sidebar.find('.collapse.show').collapse('hide');
             });
 
             // Sidebar collapse menu on hover
-            $(document).on('mouseenter mouseleave', '.sidebar .nav-item', function (ev) {
+            document.querySelector('.sidebar .nav-item').addEventListener('mouseenter mouseleave', function (e) {
                 let body = $('body');
-                let sidebarIconOnly = body.hasClass("sidebar-icon-only");
+                let sidebarIconOnly = body.classList.contains('sidebar-icon-only');
                 if (!('ontouchstart' in document.documentElement)) {
                     if (sidebarIconOnly) {
                         let $menuItem = $(this);
-                        if (ev.type === 'mouseenter') {
-                            $menuItem.addClass('hover-open')
+                        if (e.type === 'mouseenter') {
+                            $menuItem.classList.add('hover-open');
                         } else {
-                            $menuItem.removeClass('hover-open')
+                            $menuItem.classList.remove('hover-open');
                         }
                     }
                 }
             });
 
             // Close collapse menu when mouse leave from sidebar hover only
-            $(document).on('mouseleave', '.sidebar-hover-only .sidebar', function (ev) {
-                $('.sidebar').find('.collapse.show').collapse('hide');
+            document.querySelector('.sidebar-hover-only .sidebar').addEventListener('mouseleave', function (e) {
+                document.querySelector('.sidebar').find('.collapse.show').collapse('hide');
             });
 
             // Prevent dropdown menu from closing inside click
@@ -107,8 +88,11 @@ export default {
         }
     },
     methods: {
-        sidebarOffcanvas() {
-            $('.sidebar-offcanvas').toggleClass('active')
+        toggleSidebar() {
+            document.querySelector('body').classList.toggle('sidebar-icon-only');
+        },
+        sidebarOffCanvas() {
+            document.querySelector('.sidebar-off-canvas').classList.toggle('active');
         },
         fullscreen() {
             if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
@@ -133,54 +117,8 @@ export default {
                 }
             }
         },
-        togglingLeftMenu(action) {
-            let body = $('body');
-
-            if (action === 'active-icon-only-menu') {
-                body.removeClass('sidebar-hover-only');
-                body.toggleClass('sidebar-icon-only');
-                this.leftMenuType = 'icon-only';
-            }
-            else if (action === 'active-floating-menu') {
-                body.removeClass('sidebar-icon-only');
-                body.toggleClass('sidebar-hover-only');
-                $('.sidebar').find('.collapse.show').collapse('hide');
-                this.leftMenuType = 'floating';
-            }
-            else if (action === 'active-normal-menu') {
-                body.removeClass('sidebar-icon-only');
-                body.removeClass('sidebar-hover-only');
-                this.leftMenuType = 'normal';
-            }
-        },
         toggleDarkMode() {
             this.darkMode = !this.darkMode;
-        },
-        textTruncate(str, length, ending) {
-            if (length == null) {
-                length = 50;
-            }
-            if (ending == null) {
-                ending = '...';
-            }
-            if (str.length > length) {
-                return str.substring(0, length - ending.length) + ending;
-            } else {
-                return str;
-            }
-        },
-
-        // Methods for filters
-        clear(e) {
-            e.stopPropagation();
-        },
-        hideDropDownMenu() {
-            this.toggleFilters();
-            this.isFiltersOpen = !this.isFiltersOpen;
-            $('.dropdown-menu').removeClass('show');
-        },
-        toggleFilters() {
-            this.isFiltersOpen = !this.isFiltersOpen;
-        },
+        }
     }
 };
