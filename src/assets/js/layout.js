@@ -1,3 +1,5 @@
+import feather from "feather-icons";
+
 export default {
     data() {
         return {
@@ -18,66 +20,52 @@ export default {
         }
     },
     mounted() {
-        document.addEventListener("DOMContentLoaded", function (event) {
-            let body = document.querySelector('body');
-            let sidebar = document.querySelector('.sidebar');
+        feather.replace();
+        document.addEventListener("DOMContentLoaded", (event) => {
+            let body = document.querySelector('body'),
+                sidebar = document.querySelector('.sidebar'),
+                navbar = document.querySelector('.navbar-top'),
+                navItems = document.querySelectorAll('.sidebar .nav-item');
 
-            // Add active class to nav-link based on dynamic url
-            let current = location.pathname.split('/').pop();
-            $('.nav li a', sidebar).each(function () {
-                let $this = $(this);
-                addActiveClass($this);
-            });
-
-            // For active classes of sidebar menu
-            function addActiveClass(element) {
-                if (element.attr('href').includes(current ? current : 'index.html')) {
-                    element.parents('.nav-item').last().classList.add('active');
-                    if (element.parents('.sub-menu').length) {
-                        element.closest('.collapse').classList.add('show');
-                        element.classList.add('active');
-                    }
-                    if (element.parents('.submenu-item').length) {
-                        element.classList.add('active');
-                    }
+            // Add class navbar onscroll
+            window.onscroll = function () {
+                if (window.pageYOffset > 0) {
+                    navbar.classList.add('navbar-sticky');
+                } else {
+                    navbar.classList.remove('navbar-sticky');
                 }
             }
 
             // Close other submenu in sidebar on opening any
-            sidebar.on('show.bs.collapse', '.collapse', function () {
-                sidebar.find('.collapse.show').collapse('hide');
+            sidebar.addEventListener('show.bs.collapse', () => {
+                sidebar.querySelectorAll('.collapse.show').forEach(obj => obj.classList.remove('show'));
             });
 
-            // Sidebar collapse menu on hover
-            document.querySelector('.sidebar .nav-item').addEventListener('mouseenter mouseleave', function (e) {
-                let body = $('body');
-                let sidebarIconOnly = body.classList.contains('sidebar-icon-only');
-                if (!('ontouchstart' in document.documentElement)) {
+            // Open menu on icon only sidebar
+            navItems.forEach(item => {
+                item.addEventListener('mouseenter', (e) => {
+                    let sidebarIconOnly = body.classList.contains('sidebar-icon-only');
                     if (sidebarIconOnly) {
-                        let $menuItem = $(this);
                         if (e.type === 'mouseenter') {
-                            $menuItem.classList.add('hover-open');
-                        } else {
-                            $menuItem.classList.remove('hover-open');
+                            item.classList.add('hover-open');
                         }
                     }
-                }
-            });
-
-            // Close collapse menu when mouse leave from sidebar hover only
-            document.querySelector('.sidebar-hover-only .sidebar').addEventListener('mouseleave', function (e) {
-                document.querySelector('.sidebar').find('.collapse.show').collapse('hide');
-            });
-
-            // Prevent dropdown menu from closing inside click
-            $(document).on('click.bs.dropdown.data-api', '.dropdown.keep-inside-clicks-open', function (e) {
-                e.stopPropagation();
+                });
+                item.addEventListener('mouseleave', (e) => {
+                    let sidebarIconOnly = body.classList.contains('sidebar-icon-only');
+                    if (sidebarIconOnly) {
+                        let $menuItem = this;
+                        if (e.type === 'mouseleave') {
+                            item.classList.remove('hover-open');
+                        }
+                    }
+                });
             });
         });
 
         // Check for active theme
         let htmlElement = document.documentElement;
-        let theme = localStorage.getItem("theme");
+        let theme = localStorage.getItem('theme');
 
         if (theme === 'dark') {
             htmlElement.setAttribute('theme', 'dark');
@@ -88,12 +76,6 @@ export default {
         }
     },
     methods: {
-        toggleSidebar() {
-            document.querySelector('body').classList.toggle('sidebar-icon-only');
-        },
-        sidebarOffCanvas() {
-            document.querySelector('.sidebar-off-canvas').classList.toggle('active');
-        },
         fullscreen() {
             if ((document.fullScreenElement !== undefined && document.fullScreenElement === null) || (document.msFullscreenElement !== undefined && document.msFullscreenElement === null) || (document.mozFullScreen !== undefined && !document.mozFullScreen) || (document.webkitIsFullScreen !== undefined && !document.webkitIsFullScreen)) {
                 if (document.documentElement.requestFullScreen) {
@@ -119,6 +101,12 @@ export default {
         },
         toggleDarkMode() {
             this.darkMode = !this.darkMode;
+        },
+        toggleSidebar() {
+            document.querySelector('body').classList.toggle('sidebar-icon-only');
+        },
+        sidebarOffCanvas() {
+            document.querySelector('.sidebar-off-canvas').classList.toggle('active');
         }
     }
 };

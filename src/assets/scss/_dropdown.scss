@@ -3,6 +3,9 @@
 
 .dropdown {
   .dropdown-menu {
+    border: none;
+    border-radius: $default-radius;
+    box-shadow: var(--default-box-shadow);
     background-color: var(--dropdown-menu-bg);
 
     .dropdown-divider {

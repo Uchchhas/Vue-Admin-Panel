@@ -1,23 +1,24 @@
 @import "../variables";
 @import "../theme-colors";
 
-.navbar {
-  font-family: $type-1;
-  background: var(--navbar-bg);
+.navbar-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 0;
   margin-left: $sidebar-width-lg;
-  box-shadow: var(--navbar-box-shadow);
   transition: all $action-transition-duration $action-transition-timing-function;
   -moz-transition: all $action-transition-duration $action-transition-timing-function;
   -webkit-transition: all $action-transition-duration $action-transition-timing-function;
 
   .navbar-menu-wrapper {
+    width: 100%;
     display: flex;
-    padding: 0 2rem;
+    padding: 1rem;
     align-items: center;
-    height: $navbar-height;
     color: $navbar-menu-color;
     justify-content: space-between;
-    width: calc(100% - #{$sidebar-width-lg});
     transition: width $action-transition-duration $action-transition-timing-function;
     -moz-transition: width $action-transition-duration $action-transition-timing-function;
     -webkit-transition: width $action-transition-duration $action-transition-timing-function;
@@ -38,11 +39,11 @@
       flex-direction: row;
 
       .nav-item {
+        display: inline-flex;
+        align-items: center;
+
         .nav-link {
           padding: 0 1rem;
-          display: inline-flex;
-          align-items: center;
-          height: $navbar-height;
           color: var(--default-font-color);
 
           i {
@@ -58,10 +59,6 @@
           }
 
           .dropdown-menu {
-            border: none;
-            border-radius: $default-radius;
-            box-shadow: var(--default-box-shadow);
-
             &:before {
               content: '';
               width: 0;
@@ -87,7 +84,6 @@
                 align-items: center;
                 cursor: pointer;
                 font-size: inherit;
-                margin-bottom: 0;
                 padding: 1rem 2rem;
               }
             }
@@ -101,15 +97,11 @@
             display: flex;
 
             .nav-profile-img {
-              width: 32px;
-              height: 32px;
-              position: relative;
-
               img {
-                width: 32px;
-                height: 32px;
+                width: 45px;
+                height: 45px;
                 border-radius: 100%;
-                border: 1.5px solid $brand-color;
+                border: 2px solid $brand-color;
               }
             }
           }
@@ -117,55 +109,38 @@
           .dropdown-menu {
             width: 250px !important;
 
-            .nav-profile-img {
-              margin-right: 1rem;
-              position: relative;
-              width: 50px;
-              height: 50px;
-
-              img {
-                width: 50px;
-                height: 50px;
-                border-radius: 100%;
-              }
-            }
-
-            .dropdown-divider {
-              margin: 0.5rem 0;
-            }
-
             .dropdown-item {
-              &.profile {
-                cursor: default;
-                font-size: 90%;
-
-                &:hover {
-                  background: transparent;
-                  color: var(--default-font-color);
-                }
-
-                .nav-profile-text {
-                  p {
-                    text-wrap: normal !important;
-                    white-space: normal !important;
-                    text-overflow: initial !important;
-                  }
-                }
-              }
-
               i {
-                font-size: 24px;
+                font-size: 20px;
+
               }
             }
+          }
+        }
+
+        &:first-child {
+          .nav-link {
+            padding-left: 0;
+          }
+        }
+
+        &:last-child {
+          .nav-link {
+            padding-right: 0;
           }
         }
       }
     }
   }
+
+  &.navbar-sticky {
+    background-color: var(--navbar-bg);
+    box-shadow: var(--navbar-box-shadow);
+  }
 }
 
 @media (max-width: 991px) {
-  .navbar {
+  .navbar-top {
     margin-left: 0;
     flex-direction: row;
 
@@ -181,7 +156,7 @@
 }
 
 @media (max-width: 767px) {
-  .navbar {
+  .navbar-top {
     .navbar-menu-wrapper {
       padding-left: 20px;
       padding-right: 20px;

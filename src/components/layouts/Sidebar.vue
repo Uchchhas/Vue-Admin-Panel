@@ -1,25 +1,31 @@
 <template>
     <nav class="sidebar sidebar-off-canvas" id="sidebar">
-        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-            <a class="navbar-brand brand-logo" href="#"><img src="../../assets/images/logo.png" alt="logo" /></a>
-            <a class="navbar-brand brand-logo-mini" href="#"><img src="../../assets/images/logo.png" alt="logo" /></a>
+        <div class="navbar-brand-wrapper">
+            <a class="navbar-brand brand-logo" href="#"><img src="../../assets/images/logo.png" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="#"><img src="../../assets/images/logo.png" alt="logo"/></a>
         </div>
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="/">
-                    <i class="las la-border-all"></i>
+                <router-link class="nav-link" active-class="active" to="/">
+                    <div class="icon-wrapper">
+                        <i data-feather="home"></i>
+                    </div>
                     <span class="menu-title">Dashboard</span>
-                </a>
+                </router-link>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/calendar">
-                    <i class="las la-calendar"></i>
+                <router-link class="nav-link" active-class="active" to="/calendar">
+                    <div class="icon-wrapper">
+                        <i data-feather="calendar"></i>
+                    </div>
                     <span class="menu-title">Calendar</span>
-                </a>
+                </router-link>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#ui-elements" role="button" aria-expanded="false" aria-controls="ui-elements">
-                    <i class="las la-layer-group"></i>
+                    <div class="icon-wrapper">
+                        <i data-feather="layers"></i>
+                    </div>
                     <span class="menu-title">UI Elements</span>
                 </a>
                 <div class="collapse" id="ui-elements">

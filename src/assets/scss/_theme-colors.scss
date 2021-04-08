@@ -1,9 +1,9 @@
 @import "variables";
 
 :root {
-  --base-color: #{lighten($brand-color, 65%)};
+  --base-color: #{lighten($brand-color, 55%)};
   --navbar-bg: #{$white};
-  --sidebar-bg: #{$white};
+  --sidebar-bg: #{$brand-color};
   --default-font-color: #313131;
   --default-border-color: #F0F2F5;
   --input-search-box-border: #{$light-color};

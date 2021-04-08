@@ -10,25 +10,20 @@
   width: $sidebar-width-lg;
   background: var(--sidebar-bg);
   box-shadow: var(--sidebar-box-shadow);
-  transition: width $action-transition-duration $action-transition-timing-function;
-  -moz-transition: width $action-transition-duration $action-transition-timing-function;
-  -webkit-transition: width $action-transition-duration $action-transition-timing-function;
+  transition: all $action-transition-duration $action-transition-timing-function;
+  -moz-transition: all $action-transition-duration $action-transition-timing-function;
+  -webkit-transition: all $action-transition-duration $action-transition-timing-function;
 
   .navbar-brand-wrapper {
-    height: $navbar-height;
-    width: $sidebar-width-lg;
-    background: var(--navbar-brand-bg);
-    transition: width $action-transition-duration $action-transition-timing-function;
-    -moz-transition: width $action-transition-duration $action-transition-timing-function;
-    -webkit-transition: width $action-transition-duration $action-transition-timing-function;
+    padding: 1rem 1.5rem;
 
     .navbar-brand {
       width: 100%;
-      margin-right: 0;
-      padding: 0.25rem 0;
+      padding: 0;
+      margin: 0;
 
       img {
-        height: 40px;
+        height: 45px;
         margin: auto;
         max-width: 100%;
         vertical-align: middle;
@@ -36,12 +31,6 @@
 
       &.brand-logo-mini {
         display: none;
-
-        img {
-          max-width: 100%;
-          height: 28px;
-          margin: auto;
-        }
       }
     }
   }
@@ -54,53 +43,83 @@
     max-height: calc(100vh - #{$navbar-height});
 
     .nav-item {
-      padding-right: 1.2rem;
-      transition: all $default-transition-duration $action-transition-timing-function;
-
       .nav-link {
         display: flex;
         align-items: center;
         white-space: nowrap;
-        padding: 1rem 1.5rem;
-        color: var(--default-font-color);
-        transition: color $default-transition-duration $action-transition-timing-function;
+        padding: 0.35rem 1.5rem;
+        color: lighten($brand-color, 45%);
 
-        i {
-          font-size: 25px;
+        .icon-wrapper {
+          z-index: 2;
+          height: 45px;
+          max-width: 45px;
+          min-width: 45px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+
+          svg {
+            color: lighten($brand-color, 45%);
+          }
         }
 
         .menu-title {
-          margin-left: 1rem;
+          z-index: 1;
+          flex-grow: 1;
+          margin-left: -10px;
           display: inline-block;
+          padding: 0.6rem 1.5rem;
+          border-radius: 0 20px 20px 0;
           font-size: $sidebar-menu-font-size;
         }
 
         &[aria-expanded] {
           &:after {
-            content: '\f107';
-            opacity: 0.5;
-            margin-left: auto;
+            content: '';
             display: inline-block;
-            color: $sidebar-dark-menu-color;
-            font: normal normal 900 $sidebar-arrow-font-size/1 'Line Awesome Free';
-            transition: $action-transition-duration $action-transition-timing-function;
+            box-sizing: border-box;
+            width: 7px;
+            height: 7px;
+            border-bottom: 2px solid;
+            border-right: 2px solid;
+            transform: rotate(45deg);
+            transition: all $default-transition-duration ease-in-out;
           }
         }
 
         &[aria-expanded="true"] {
           &:after {
-            transform: rotate(90deg);
+            transform: rotate(135deg);
           }
         }
 
         &:hover {
-          color: $brand-color;
+          .icon-wrapper {
+            i {
+              color: lighten($brand-color, 55%);
+            }
+          }
+
+          .menu-title {
+            color: lighten($brand-color, 55%);
+          }
         }
 
         &.active {
-          border-radius: 0 30px 30px 0;
-          border-left: 3px solid $brand-color;
-          background-color: lighten($brand-color, 60%);
+          .icon-wrapper {
+            background-color: lighten($brand-color, 55%);
+
+            svg {
+              color: $brand-color;
+            }
+          }
+
+          .menu-title {
+            color: lighten($brand-color, 55%);
+            background-color: rgba(193, 210, 240, 0.25);
+          }
         }
       }
     }

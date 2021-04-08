@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <nav class="navbar navbar-top">
         <div class="navbar-menu-wrapper">
             <div class="navbar-left-items">
                 <a href="/" class="navbar-brand d-block d-lg-none">
@@ -8,18 +8,12 @@
                 <ul class="navbar-nav">
                     <li class="nav-item d-none d-lg-block">
                         <a href="#" class="nav-link" @click.prevent="toggleSidebar">
-                            <i class="las la-align-left"/>
+                            <i data-feather="align-left"></i>
                         </a>
                     </li>
                     <li class="nav-item d-block d-lg-none">
                         <a href="#" class="nav-link" @click="sidebarOffCanvas">
-                            <i class="las la-align-left"/>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" @click.prevent="toggleDarkMode">
-                            <i v-if="darkMode" class="las la-cloud-sun"/>
-                            <i v-else class="las la-cloud-moon"/>
+                            <i data-feather="align-left"></i>
                         </a>
                     </li>
                 </ul>
@@ -27,38 +21,35 @@
             <div class="navbar-right-items">
                 <ul class="navbar-nav">
                     <li class="nav-item">
+                        <a href="#" class="nav-link" @click.prevent="toggleDarkMode">
+                            <i v-if="darkMode" class="icofont-sunny"></i>
+                            <i v-else class="icofont-full-night"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="#" class="nav-link" @click="fullscreen">
-                            <i class="las la-expand"/>
+                            <i data-feather="maximize"></i>
                         </a>
                     </li>
                     <li class="nav-item nav-profile dropdown">
-                        <a class="nav-link dropdown-toggle me-0" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle border-left" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="text-end me-2">
+                                <small class="text-muted">Good morning</small>
+                                <p class="mb-0">Jeffrey Chisolm</p>
+                            </span>
                             <div class="nav-profile-img">
                                 <img src="../../assets/images/default-avatar.jpg" alt="">
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end navbar-dropdown" aria-labelledby="dropdownMenuLink">
-                            <div class="dropdown-item profile">
-                                <div class="nav-profile-img">
-                                    <img src="../../assets/images/default-avatar.jpg" alt="">
-                                </div>
-                                <div class="nav-profile-text">
-                                    <p class="my-0 text-black">Jeffrey Chisolm</p>
-                                    <span class="text-secondary">Admin</span>
-                                </div>
-                            </div>
-                            <div class="dropdown-divider"/>
                             <a class="dropdown-item" href="#">
-                                <i class="las la-user me-2"></i>
-                                My Profile
+                                <i data-feather="user" class="me-3"></i> <span class="d-inline-block">My Profile</span>
                             </a>
                             <a class="dropdown-item" href="#">
-                                <i class="las la-cog me-2"></i>
-                                Settings
+                                <i data-feather="settings" class="me-3"></i> <span class="d-inline-block">Settings</span>
                             </a>
                             <a class="dropdown-item" href="#">
-                                <i class="las la-sign-out-alt me-2"></i>
-                                Logout
+                                <i data-feather="log-out" class="me-3"></i> <span class="d-inline-block">Logout</span>
                             </a>
                         </div>
                     </li>

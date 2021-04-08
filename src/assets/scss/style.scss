@@ -1,14 +1,14 @@
-// Import Fonts
+// Fonts
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+// Icofont
+@import "../plugins/icofont/icofont.min.css";
 
 // Import Custom Variables
 @import 'variables';
 
-// Import Bootstrap
+// Bootstrap
 @import 'bootstrap/bootstrap';
-
-// Import Line-awesome
-@import 'line-awesome/scss/line-awesome';
 
 // Template mixins
 @import './mixins/misc';
@@ -16,6 +16,6 @@
 
 @import 'misc';
 @import 'navs';
-@import 'layouts';
 @import 'dropdown';
+@import 'layouts';
 @import 'vertical-wrapper';
