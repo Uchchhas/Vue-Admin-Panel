@@ -52,15 +52,17 @@
 
         .icon-wrapper {
           z-index: 2;
-          height: 45px;
-          max-width: 45px;
-          min-width: 45px;
+          height: 43px;
+          max-width: 43px;
+          min-width: 43px;
           display: flex;
           align-items: center;
           justify-content: center;
           border-radius: 50%;
 
           svg {
+            width: 22px;
+            height: 22px;
             color: lighten($brand-color, 45%);
           }
         }
@@ -68,36 +70,42 @@
         .menu-title {
           z-index: 1;
           flex-grow: 1;
-          margin-left: -10px;
-          display: inline-block;
-          padding: 0.6rem 1.5rem;
+          margin-left: -8px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0.5rem 1.15rem;
           border-radius: 0 20px 20px 0;
           font-size: $sidebar-menu-font-size;
         }
 
         &[aria-expanded] {
-          &:after {
-            content: '';
-            display: inline-block;
-            box-sizing: border-box;
-            width: 7px;
-            height: 7px;
-            border-bottom: 2px solid;
-            border-right: 2px solid;
-            transform: rotate(45deg);
-            transition: all $default-transition-duration ease-in-out;
+          .menu-title {
+            &:after {
+              content: '';
+              width: 6.5px;
+              height: 6.5px;
+              border-right: 1.5px solid;
+              border-bottom: 1.5px solid;
+              display: inline-block;
+              box-sizing: border-box;
+              transform: rotate(45deg);
+              transition: all $default-transition-duration ease-in-out;
+            }
           }
         }
 
         &[aria-expanded="true"] {
-          &:after {
-            transform: rotate(135deg);
+          .menu-title {
+            &:after {
+              transform: rotate(135deg);
+            }
           }
         }
 
         &:hover {
           .icon-wrapper {
-            i {
+            svg {
               color: lighten($brand-color, 55%);
             }
           }
@@ -127,6 +135,7 @@
     &.sub-menu {
       list-style: none;
       margin-bottom: 0;
+      padding: 0 1.15rem;
 
       .nav-item {
         padding: 0;
@@ -136,45 +145,60 @@
           border-top: 0;
           line-height: 1;
           position: relative;
-          color: $sidebar-dark-menu-color;
+          padding: 0.8rem 1.5rem;
+          color: lighten($brand-color, 45%);
           font-size: $sidebar-submenu-font-size;
-          padding: 0 1.35rem 0.75rem 1.35rem;
 
-          &::before {
-            content: '';
-            display: inline-block;
+          .sub-menu-pointer {
             width: 7px;
             height: 7px;
-            margin: 10px 14px;
             border-radius: 50%;
-            background-color: $sidebar-dark-menu-color;
+            flex-shrink: 0;
+            display: inline-block;
+            margin-inline-end: 22px;
+            background-color: lighten($brand-color, 45%);
+          }
+
+          &::before {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 26px;
+            content: '';
+            width: 1px;
+            background-color: lighten($brand-color, 45%);
           }
 
           &.active {
-            color: lighten($brand-color, 35%);
-            background: transparent;
+            color: lighten($brand-color, 55%);
 
             &::before {
-              background-color: $brand-color;
+              background-color: lighten($brand-color, 55%);
             }
           }
 
           &:hover {
+            color: lighten($brand-color, 55%);
+
             &::before {
-              background-color: $brand-color;
+              background-color: lighten($brand-color, 55%);
             }
           }
         }
 
         &:first-child {
           .nav-link {
-            padding-top: 1.2rem;
+            &::before {
+              top: 1.4rem;
+            }
           }
         }
 
         &:last-child {
           .nav-link {
-            padding-bottom: 1.2rem;
+            &::before {
+              bottom: 1.4rem;
+            }
           }
         }
       }
@@ -203,8 +227,15 @@
 
 // Style for off-canvas menu
 @media screen and (max-width: 991px) {
+  .sidebar {
+    .navbar-brand-wrapper {
+      display: none !important;
+    }
+  }
+
   .sidebar-off-canvas {
     margin-top: 0;
+    padding-top: 15px;
     position: fixed;
     top: $navbar-height;
     bottom: 0;

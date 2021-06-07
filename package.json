@@ -7,9 +7,11 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@popperjs/core": "^2.9.2",
+    "bootstrap-icons": "^1.4.1",
     "core-js": "^3.6.5",
-    "css.gg": "^2.0.0",
     "feather-icons": "^4.28.0",
+    "v-calendar": "^3.0.0-alpha.3",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },

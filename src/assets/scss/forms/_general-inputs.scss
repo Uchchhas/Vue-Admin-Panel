@@ -1,0 +1,42 @@
+@import '../variables';
+@import '../theme-colors';
+
+label {
+  color: var(--font-color);
+  font-size: $default-font-size;
+}
+
+.form-control {
+  padding: .6rem .85rem;
+  color: var(--font-color);
+  font-size: $default-font-size;
+  border-color: var(--border-color);
+  background-color: var(--form-control-bg);
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    color: var(--font-color);
+    border-color: $brand-color;
+    background-color: var(--form-control-bg);
+  }
+
+  &[type="color"] {
+    height: 40px;
+  }
+}
+
+.search-input {
+  position: relative;
+
+  .search-icon {
+    position: absolute;
+    top: 10px;
+    left: 0.85rem;
+  }
+
+  input {
+    padding: 0.6rem 0.85rem 0.6rem 2.5rem;
+  }
+}
+

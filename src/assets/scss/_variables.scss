@@ -21,7 +21,7 @@ $darkslategray: #2e383e;
 // Color Variables
 $base-color: #FAFBFE;
 $info-color: #38a4f8;
-$brand-color: #2A58AD;
+$brand-color: #576ACA;
 $light-color: #F5F8FF;
 $muted-color: #9c9fa6;
 $error-color: #cc3300;
@@ -31,7 +31,7 @@ $success-color: #46c35f;
 $secondary-color: #9397A0;
 
 // Border Variables
-$default-radius: 0.25rem;
+$default-radius: 0.35rem;
 
 // Fonts
 $default-font-size: 0.935rem;
@@ -49,10 +49,8 @@ $default-card-padding: 2rem;
 $dropdown-arrow-font-size: 0.55rem;
 
 // Measurement & Property Variables
-$default-padding-margin: 2rem;
-$bootstrap-column-padding: 1rem;
-$main-content-wrapper-padding: 2rem;
-$filter-button-padding: 0.5rem 1.5rem;
+$default-padding-margin: 1.5rem;
+$main-content-wrapper-padding: $default-padding-margin;
 
 // Transition Variables
 $default-transition-duration: 0.25s;

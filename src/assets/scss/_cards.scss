@@ -1,0 +1,23 @@
+@import 'variables';
+@import 'theme-colors';
+
+.card {
+  border: 0;
+  border-radius: $default-radius;
+  box-shadow: var(--box-shadow);
+  background-color: var(--card-color);
+
+  .card-header {
+    background-color: transparent;
+    padding: $default-padding-margin;
+    border-color: var(--border-color);
+
+    .title {
+      margin-bottom: 0;
+    }
+  }
+
+  .card-body {
+    padding: $default-padding-margin;
+  }
+}

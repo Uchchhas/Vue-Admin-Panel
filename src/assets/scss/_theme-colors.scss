@@ -1,16 +1,16 @@
 @import "variables";
 
 :root {
-  --base-color: #{lighten($brand-color, 55%)};
+  --base-color: #{lighten($brand-color, 42%)};
   --navbar-bg: #{$white};
   --sidebar-bg: #{$brand-color};
-  --default-font-color: #313131;
-  --default-border-color: #F0F2F5;
+  --font-color: #313131;
+  --border-color: #F0F2F5;
   --input-search-box-border: #{$light-color};
   --dropdown-menu-bg: #{$white};
   --dropdown-item-hover-bg: var(--base-color);
-  --default-card-bg: #{$white};
-  --default-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05);
+  --card-color: #{$white};
+  --box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05);
   --navbar-box-shadow: 9px 2px 10px rgba(0, 0, 0, 0.05);
   --navbar-brand-bg: #{$white};
   --sidebar-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.05);
@@ -32,12 +32,12 @@
   --shadow-x-icon: none;
   --search-box-bg: #{$white};
   --bg-input-readonly: #e9ecef;
-  --chips-bg: #{$white};
+  --chips-bg: var(--base-color);
   --tab-step-before-bg: #{$white};
   --time-picker-bg: #{$white};
   --modal-header-footer-bg: #{$white};
   --modal-body-bg: #{$white};
-  --note-font-color: var(--default-font-color);
+  --note-font-color: var(--font-color);
   --note-bg-color: rgba(255, 204, 23, 0.09);
   --avaters-border-color: #{$white};
   --avatars-box-shadow: -2px 2px 4px 0 rgba(0, 0, 0, .2);
@@ -59,13 +59,13 @@
   --base-color: #{darken($sidebar-dark-bg, 7%)};
   --navbar-bg: #{darken($sidebar-dark-bg, 3%)};
   --sidebar-bg: #{darken($sidebar-dark-bg, 3%)};
-  --default-font-color: #{darken($white, 20%)};
-  --default-border-color: #{lighten($sidebar-dark-bg, 2%)};
+  --font-color: #{darken($white, 20%)};
+  --border-color: #{lighten($sidebar-dark-bg, 2%)};
   --input-search-box-border: transparent;
   --dropdown-menu-bg: #{darken($sidebar-dark-bg, 3%)};
   --dropdown-item-hover-bg: var(--base-color);
-  --default-card-bg: #{darken($sidebar-dark-bg, 2%)};
-  --default-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  --card-color: #{darken($sidebar-dark-bg, 2%)};
+  --box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   --navbar-box-shadow: 1px 5px 6px rgba(0, 0, 0, 0.09);
   --navbar-brand-bg: #{$sidebar-dark-bg};
   --sidebar-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);

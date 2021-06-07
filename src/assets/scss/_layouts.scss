@@ -78,11 +78,21 @@
                   align-items: center;
                   text-align: left;
                   margin-left: 0;
-                  width: $icon-only-collapse-width;
-                  padding: $sidebar-submenu-item-padding;
-                  border-radius: 0;
                   background: var(--sidebar-bg);
+                  width: $icon-only-collapse-width;
                   box-shadow: var(--menu-title-shadow);
+                  padding: $sidebar-submenu-item-padding;
+                  border-radius: 0 $default-radius $default-radius 0;
+
+                  &:after {
+                    display: none;
+                  }
+                }
+
+                &[aria-expanded] {
+                  .menu-title {
+                    border-bottom-right-radius: 0;
+                  }
                 }
               }
 
@@ -91,9 +101,10 @@
                 display: block;
                 position: absolute;
                 left: $sidebar-width-icon;
-                width: $icon-only-collapse-width;
                 background: var(--sidebar-bg);
+                width: $icon-only-collapse-width;
                 box-shadow: var(--submenu-shadow);
+                border-bottom-right-radius: $default-radius;
 
                 .sub-menu {
                   .nav-link {
@@ -113,6 +124,14 @@
               .nav-link {
                 padding-left: 0;
                 padding-right: 0;
+
+                .sub-menu-pointer {
+                  margin-inline-end: 15px;
+                }
+
+                &::before {
+                  left: 3px;
+                }
               }
             }
           }

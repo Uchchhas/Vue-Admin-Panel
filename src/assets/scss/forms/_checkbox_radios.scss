@@ -1,0 +1,132 @@
+@import '../variables';
+@import '../theme-colors';
+
+.form-check {
+  &.form-check-checkbox {
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+
+    .form-check-input {
+      width: 24px;
+      height: 24px;
+      margin-top: 0;
+      margin-right: 7px;
+      border-width: 2px;
+      position: relative;
+      background-size: 1rem;
+      border-color: $muted-color;
+      background-color: var(--form-control-bg);
+
+      &:focus {
+        box-shadow: none;
+      }
+
+      &:checked[type=checkbox] {
+        border-color: $brand-color;
+        background-image: url('../images/check-icon.svg');
+      }
+    }
+
+    &.form-check-inline {
+      display: inline-flex;
+    }
+  }
+}
+
+.custom-radio {
+  .custom-radio-label {
+    cursor: pointer;
+    display: inline-block;
+
+    input {
+      opacity: 0;
+      width: 1px;
+      height: 1px;
+    }
+
+    .outside {
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      border: 1px solid $brand-color;
+      -webkit-box-sizing: border-box;
+      background-color: var(--form-control-bg);
+
+      .inside {
+        width: 12px;
+        height: 12px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: $brand-color;
+        transform: scale(0, 0);
+        -webkit-transform: scale(0, 0);
+      }
+    }
+
+    input:checked + .outside .inside {
+      transform: scale(1, 1);
+      -webkit-transform: scale(1, 1);
+      animation: radio-select 0.1s linear;
+      -webkit-animation: radio-select 0.1s linear;
+    }
+  }
+}
+
+.radio {
+  display: flex;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 20px;
+  position: relative;
+  align-items: center;
+
+  .label {
+    float: left;
+    width: 24px;
+    height: 24px;
+    display: block;
+    margin-right: 7px;
+    position: relative;
+    border-radius: 100%;
+    border: 2px solid $muted-color;
+    -webkit-tap-highlight-color: transparent;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 14px;
+      height: 14px;
+      opacity: 0.04;
+      transform: scale(0);
+      border-radius: 100%;
+      pointer-events: none;
+      background: $brand-color;
+      transition: all 0.2s ease;
+    }
+  }
+
+  input[type="radio"] {
+    display: none;
+
+    &:checked + .label {
+      border-color: $brand-color;
+
+      &:after {
+        opacity: 1;
+        transform: scale(1);
+        transition: all 0.2s cubic-bezier(0.35, 0.9, 0.4, 0.9);
+      }
+    }
+  }
+
+  &.radio-inline {
+    display: inline-flex;
+  }
+}

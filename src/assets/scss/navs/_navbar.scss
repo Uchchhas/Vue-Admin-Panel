@@ -2,6 +2,7 @@
 @import "../theme-colors";
 
 .navbar-top {
+  z-index: 1;
   position: fixed;
   top: 0;
   right: 0;
@@ -15,7 +16,7 @@
   .navbar-menu-wrapper {
     width: 100%;
     display: flex;
-    padding: 1rem;
+    padding: 1rem $default-padding-margin;
     align-items: center;
     color: $navbar-menu-color;
     justify-content: space-between;
@@ -23,14 +24,19 @@
     -moz-transition: width $action-transition-duration $action-transition-timing-function;
     -webkit-transition: width $action-transition-duration $action-transition-timing-function;
 
-    .navbar-brand {
-      margin-right: 0;
+    .navbar-left-items {
+      display: flex;
+      align-items: center;
 
-      img {
-        margin: auto;
-        height: 32px;
-        max-width: 100%;
-        vertical-align: middle;
+      .navbar-brand {
+        margin-right: 0;
+
+        img {
+          margin: auto;
+          height: 32px;
+          max-width: 100%;
+          vertical-align: middle;
+        }
       }
     }
 
@@ -44,7 +50,7 @@
 
         .nav-link {
           padding: 0 1rem;
-          color: var(--default-font-color);
+          color: var(--font-color);
 
           i {
             font-size: 24px;
@@ -143,23 +149,12 @@
   .navbar-top {
     margin-left: 0;
     flex-direction: row;
+    background-color: var(--navbar-bg);
+    box-shadow: var(--navbar-box-shadow);
+
 
     .navbar-menu-wrapper {
       width: 100%;
-    }
-  }
-  .sidebar {
-    .navbar-brand-wrapper {
-      display: none !important;
-    }
-  }
-}
-
-@media (max-width: 767px) {
-  .navbar-top {
-    .navbar-menu-wrapper {
-      padding-left: 20px;
-      padding-right: 20px;
     }
   }
 }

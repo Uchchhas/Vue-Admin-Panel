@@ -22,8 +22,8 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a href="#" class="nav-link" @click.prevent="toggleDarkMode">
-                            <i v-if="darkMode" class="icofont-sunny"></i>
-                            <i v-else class="icofont-full-night"></i>
+                            <i v-if="darkMode" class="bi bi-cloud-sun"></i>
+                            <i v-else class="bi bi-cloud-moon"></i>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -67,8 +67,7 @@ export default {
     extends: layout,
     data() {
         return {
-            leftMenuType: 'normal',
-            notifications: false
+            leftMenuType: 'normal'
         }
     },
 }

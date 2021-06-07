@@ -1,0 +1,13 @@
+@import 'variables';
+@import 'theme-colors';
+
+.badge {
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: unset;
+  padding: 0.35rem 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $default-radius;
+}

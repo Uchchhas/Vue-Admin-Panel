@@ -1,22 +1,59 @@
 @import 'variables';
 @import 'theme-colors';
 
-.dropdown {
+.dropdown, .btn-group {
   .dropdown-menu {
     border: none;
     border-radius: $default-radius;
-    box-shadow: var(--default-box-shadow);
+    box-shadow: var(--box-shadow);
     background-color: var(--dropdown-menu-bg);
 
     .dropdown-divider {
-      border-color: var(--default-border-color);
+      border-color: var(--border-color);
     }
 
     .dropdown-item {
-      color: var(--default-font-color);
+      color: var(--font-color);
+      padding: 0.75rem 1.2rem;
 
       &:hover {
         background-color: var(--dropdown-item-hover-bg);
+      }
+    }
+  }
+
+  &.action-dropdown {
+    .dropdown-toggle {
+      border: 0;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--font-color);
+      background-color: transparent;
+      transition: all 0.3s ease-in-out;
+
+      &:before, &:after {
+        display: none;
+      }
+
+      &:hover {
+        background-color: var(--base-color);
+      }
+
+      &[aria-expanded="true"] {
+        background-color: var(--base-color);
+      }
+    }
+
+    .dropdown-menu {
+      .dropdown-item {
+        .action-icon {
+          font-size: 1rem;
+        }
       }
     }
   }
